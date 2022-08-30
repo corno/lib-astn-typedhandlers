@@ -1,0 +1,32 @@
+{
+  "author": "Corno",
+  "bin": {},
+  "dependencies": {
+    "lib-astn-expect": "^0.0.0",
+    "api-astn-handlers": "^0.0.0",
+    "api-astn-tokenconsumer": "^0.0.0",
+    "api-astn-typedhandlers": "^0.0.0",
+    "pareto-core-lib": "^0.4.0",
+    "pareto-core-resolve": "^0.14.0"
+  },
+  "files": [
+    "dist",
+    "data"
+  ],
+  "keywords": [],
+  "main": "./dist/index.js",
+  "bugs": {
+    "url": "https://github.com/corno/astn/issues"
+  },
+  "description": "api for a parser that parses astn tokens",
+  "homepage": "https://github.com/corno/astn#readme",
+  "license": "ISC",
+  "name": "astn-typedhandlers-lib",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/corno/astn-typedhandlers-lib.git"
+  },
+  "types": "dist/index.d.ts",
+  "version": "0.22.0",
+  "content-fingerprint": "8459cd20692b16b46419627eaa7233a474736459"
+}
