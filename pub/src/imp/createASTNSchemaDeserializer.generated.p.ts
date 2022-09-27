@@ -17,16 +17,16 @@ import * as x from "astn-typedhandlers-api"
 import { IRequiredValueHandler, IValueHandler } from "astn-handlers-api"
 import * as expect from "astn-expect-lib"
 
-type AnnotatedString<Annotation> = {
+type AnnotatedString<PAnnotation> = {
     value: string
     annotation: Annotation
 }
 
 export type DeserError =
 | ["expect", expect.ExpectIssue]
-| ["resolve", {}]
+| ["resolve", null]
 
-export function createASTNSchemaDeserializer<Annotation>(
+export function createASTNSchemaDeserializer<PAnnotation>(
     $i: {
         raiseValidationError: ($: {
             error: DeserError
@@ -35,13 +35,13 @@ export function createASTNSchemaDeserializer<Annotation>(
             
         }) => void,
         callback: (result: x.__root_T | null) => void,
-        rr: prl.ResolveRegistry<Annotation>,
+        rr: prl.ResolveRegistry<PAnnotation>,
     }
-): IRequiredValueHandler<Annotation> {
-    const context = expect.$.createExpectContext<Annotation>(
+): IRequiredValueHandler<PAnnotation> {
+    const context = expect.$.createExpectContext<PAnnotation>(
         {
-            duplicateEntrySeverity: ["error", {}],
-            onDuplicateEntry: ["overwrite", {}]
+            duplicateEntrySeverity: ["error", null],
+            onDuplicateEntry: ["overwrite", null]
         },
         {
             issueHandler: ($) => {
@@ -59,7 +59,7 @@ export function createASTNSchemaDeserializer<Annotation>(
     const rr = $i.rr
     const callback = $i.callback
 
-    function wrap(handler: IValueHandler<Annotation>): IRequiredValueHandler<Annotation> {
+    function wrap(handler: IValueHandler<PAnnotation>): IRequiredValueHandler<PAnnotation> {
         return {
             exists: handler,
             missing: () => { },
@@ -67,9 +67,9 @@ export function createASTNSchemaDeserializer<Annotation>(
     }
     function _generateHandler_root(
         callback: (out: x.__root_T) => void,
-    ): IValueHandler<Annotation> {
+    ): IValueHandler<PAnnotation> {
         return ((callback: (out: x.__root_T) => void) => {
-            let _root_type_v: AnnotatedString<Annotation> | null = null
+            let _root_type_v: AnnotatedString<PAnnotation> | null = null
             const _types_v = pm.createDictionaryBuilder<x.__types_T>()
             return context.expectVerboseGroup({
                 properties: {
@@ -141,7 +141,7 @@ export function createASTNSchemaDeserializer<Annotation>(
 
     function _generateHandler_simple_string(
         callback: (out: x.__simple_string_T) => void,
-    ): IValueHandler<Annotation> {
+    ): IValueHandler<PAnnotation> {
         return ((callback: (out: x.__simple_string_T) => void) => {
             let _default_value_v: string | null = null
             let _quoted_v: boolean | null = null
@@ -190,7 +190,7 @@ export function createASTNSchemaDeserializer<Annotation>(
     function _generateHandler_value(
         callback: (out: x.__value_T) => void,
         types: pt.Lookup<x.__types_T>,
-    ): IValueHandler<Annotation> {
+    ): IValueHandler<PAnnotation> {
         return ((callback: (out: x.__value_T) => void) => {
             let _type_v: x.__type_TU | null = null
             return context.expectVerboseGroup({
@@ -376,7 +376,7 @@ export function createASTNSchemaDeserializer<Annotation>(
                                 },
                                 "tagged union": () => {
                                     return wrap(((callback: (out: x.__tagged_union_T) => void) => {
-                                        let _default_option_v: AnnotatedString<Annotation> | null = null
+                                        let _default_option_v: AnnotatedString<PAnnotation> | null = null
                                         const _options_v = pm.createDictionaryBuilder<x.__options_T>()
                                         return context.expectVerboseGroup({
                                             properties: {
@@ -447,7 +447,7 @@ export function createASTNSchemaDeserializer<Annotation>(
                                 },
                                 "type reference": () => {
                                     return wrap(((callback: (out: x.__type_reference_T) => void) => {
-                                        let _type_v: AnnotatedString<Annotation> | null = null
+                                        let _type_v: AnnotatedString<PAnnotation> | null = null
                                         return context.expectVerboseGroup({
                                             properties: {
                                                 "type": {

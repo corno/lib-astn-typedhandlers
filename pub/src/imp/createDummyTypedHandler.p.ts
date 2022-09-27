@@ -1,9 +1,9 @@
 
 import * as th from "astn-typedhandlers-api"
 
-export function createDummyTypedHandler<Annotation>(
-): th.ITypedValueHandler<Annotation> {
-    function createDummyTypedValueHandler(): th.ITypedValueHandler<Annotation> {
+export function createDummyTypedHandler<PAnnotation>(
+): th.ITypedValueHandler<PAnnotation> {
+    function createDummyTypedValueHandler(): th.ITypedValueHandler<PAnnotation> {
         return {
             onDictionary: ($) => {
                 return createDummyTypedDictionaryHandler()
@@ -29,7 +29,7 @@ export function createDummyTypedHandler<Annotation>(
 
         }
     }
-    function createDummyTypedDictionaryHandler(): th.IDictionaryHandler<Annotation> {
+    function createDummyTypedDictionaryHandler(): th.IDictionaryHandler<PAnnotation> {
         return {
             onEntry: () => {
                 return createDummyTypedValueHandler()
@@ -38,7 +38,7 @@ export function createDummyTypedHandler<Annotation>(
             },
         }
     }
-    function createDummyTypedGroupHandler(): th.IGroupHandler<Annotation> {
+    function createDummyTypedGroupHandler(): th.IGroupHandler<PAnnotation> {
         return {
             onProperty: () => {
                 return createDummyTypedValueHandler()
@@ -49,7 +49,7 @@ export function createDummyTypedHandler<Annotation>(
             }
         }
     }
-    function createDummyTypedListHandler(): th.IListHandler<Annotation> {
+    function createDummyTypedListHandler(): th.IListHandler<PAnnotation> {
         return {
             onElement: () => {
                 return createDummyTypedValueHandler()
@@ -58,7 +58,7 @@ export function createDummyTypedHandler<Annotation>(
             }
         }
     }
-    function createDummyTypedTaggedUnionHandler(): th.ITypedTaggedUnionHandler<Annotation> {
+    function createDummyTypedTaggedUnionHandler(): th.ITypedTaggedUnionHandler<PAnnotation> {
         return {
             onOption: () => {
                 return createDummyTypedValueHandler()

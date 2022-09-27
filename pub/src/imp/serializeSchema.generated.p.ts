@@ -12,17 +12,17 @@ export function serializeSchema(
         entryCallback: (t: T) => void,
     ) {
         sendEvent(["structural", {
-            "type": ["open dictionary", {}],
+            "type": ["open dictionary", null],
         }])
         dict.forEach(() => false, (entry, key) => {
             sendEvent(["simple string", {
                 value: key,
-                wrapping: ["quote", {}],
+                wrapping: ["quote", null],
             }])
             entryCallback(entry)
         })
         sendEvent(["structural", {
-            "type": ["close dictionary", {}],
+            "type": ["close dictionary", null],
         }])
     }
 
@@ -30,46 +30,46 @@ export function serializeSchema(
         properties: { [key: string]: () => void }
     ) {
         sendEvent(["structural", {
-            "type": ["open verbose group", {}],
+            "type": ["open verbose group", null],
         }])
         pl.createDictionary(properties).forEach(() => false, ($, key) => {
             sendEvent(["simple string", {
                 value: key,
-                wrapping: ["apostrophe", {}],
+                wrapping: ["apostrophe", null],
             }])
             properties[key]()
         })
         sendEvent(["structural", {
-            "type": ["close verbose group", {}],
+            "type": ["close verbose group", null],
         }])
     }
     function serializeTaggedUnion(option: string, callback: () => void) {
         sendEvent(["structural", {
-            "type": ["tagged union start", {}],
+            "type": ["tagged union start", null],
         }])
         sendEvent(["simple string", {
             value: option,
-            wrapping: ["apostrophe", {}],
+            wrapping: ["apostrophe", null],
         }])
         callback()
     }
     function serializeQuotedString(value: string) {
         sendEvent(["simple string", {
             value: value,
-            wrapping: ["quote", {}],
+            wrapping: ["quote", null],
         }])
     }
     function serializeReference<T>(reference: pt.Reference<T>) {
         sendEvent(["simple string", {
             value: reference.name,
-            wrapping: ["quote", {}],
+            wrapping: ["quote", null],
         }])
     }
 
     function serializeNonWrappedString(value: string) {
         sendEvent(["simple string", {
             value: value,
-            wrapping: ["none", {}],
+            wrapping: ["none", null],
         }])
     }
 

@@ -12,12 +12,12 @@
 //         return createASTNSchemaDeserializer(
 //             createExpectContext({
 //                 issueHandler: ($) => {
-//                     if ($.severity === ["error", {}]) {
+//                     if ($.severity === ["error", null]) {
 //                         onError2(["expect", $.issue], $.annotation)
 //                     }
 //                 },
-//                 duplicateEntrySeverity: ["warning", {}],
-//                 onDuplicateEntry: ["ignore", {}],
+//                 duplicateEntrySeverity: ["warning", null],
+//                 onDuplicateEntry: ["ignore", null],
 //             }),
 //             (message, annotation) => {
 //                 foundErrors = true
