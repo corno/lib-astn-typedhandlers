@@ -7,34 +7,34 @@
     "quote-props": 0
 */
 
-import * as pm from "pareto-statemachine-core"
+import * as pm from "pareto-core-state"
 import * as pl from "pareto-core-lib"
 import * as pt from "pareto-core-types"
 
-import * as prl from "pareto-resolve-lib"
-import * as x from "astn-typedhandlers-api"
+import * as prl from "pareto-core-resolve"
+import * as x from "api-astn-typedhandlers"
 
-import { IRequiredValueHandler, IValueHandler } from "astn-handlers-api"
-import * as expect from "astn-expect-lib"
+import { IRequiredValueHandler, IValueHandler } from "api-astn-handlers"
+import * as expect from "lib-astn-expect"
 
-type AnnotatedString<PAnnotation> = {
+type TAnnotatedString<PAnnotation> = {
     value: string
-    annotation: Annotation
+    annotation: PAnnotation
 }
 
-export type DeserError =
+export type TDeserError =
 | ["expect", expect.ExpectIssue]
 | ["resolve", null]
 
 export function createASTNSchemaDeserializer<PAnnotation>(
     $i: {
         raiseValidationError: ($: {
-            error: DeserError
-            annotation: Annotation
+            error: TDeserError
+            annotation: PAnnotation
             severity: expect.DiagnosticSeverity
             
         }) => void,
-        callback: (result: x.__root_T | null) => void,
+        callback: (result: x.T__root | null) => void,
         rr: prl.ResolveRegistry<PAnnotation>,
     }
 ): IRequiredValueHandler<PAnnotation> {
@@ -66,11 +66,11 @@ export function createASTNSchemaDeserializer<PAnnotation>(
         }
     }
     function _generateHandler_root(
-        callback: (out: x.__root_T) => void,
+        callback: (out: x.T__root) => void,
     ): IValueHandler<PAnnotation> {
-        return ((callback: (out: x.__root_T) => void) => {
-            let _root_type_v: AnnotatedString<PAnnotation> | null = null
-            const _types_v = pm.createDictionaryBuilder<x.__types_T>()
+        return ((callback: (out: x.T__root) => void) => {
+            let _root_type_v: TAnnotatedString<PAnnotation> | null = null
+            const _types_v = pm.createDictionaryBuilder<x.T__types>()
             return context.expectVerboseGroup({
                 properties: {
                     "root type": {
@@ -89,8 +89,8 @@ export function createASTNSchemaDeserializer<PAnnotation>(
                         onNotExists: () => { /**/ },
                         onExists: () => wrap(context.expectDictionary({
                             onProperty: (propertyData) => {
-                                return wrap(((callback: (out: x.__types_T) => void) => {
-                                    let _value_v: x.__value_T | null = null
+                                return wrap(((callback: (out: x.T__types) => void) => {
+                                    let _value_v: x.T__value | null = null
                                     return context.expectVerboseGroup({
                                         properties: {
                                             "value": {
@@ -140,9 +140,9 @@ export function createASTNSchemaDeserializer<PAnnotation>(
     }
 
     function _generateHandler_simple_string(
-        callback: (out: x.__simple_string_T) => void,
+        callback: (out: x.T__simple_string) => void,
     ): IValueHandler<PAnnotation> {
-        return ((callback: (out: x.__simple_string_T) => void) => {
+        return ((callback: (out: x.T__simple_string) => void) => {
             let _default_value_v: string | null = null
             let _quoted_v: boolean | null = null
             return context.expectVerboseGroup({
@@ -188,11 +188,11 @@ export function createASTNSchemaDeserializer<PAnnotation>(
     }
 
     function _generateHandler_value(
-        callback: (out: x.__value_T) => void,
-        types: pt.Lookup<x.__types_T>,
+        callback: (out: x.T__value) => void,
+        types: pt.Lookup<x.T__types>,
     ): IValueHandler<PAnnotation> {
-        return ((callback: (out: x.__value_T) => void) => {
-            let _type_v: x.__type_TU | null = null
+        return ((callback: (out: x.T__value) => void) => {
+            let _type_v: x.T__typeU | null = null
             return context.expectVerboseGroup({
                 properties: {
                     "type": {
@@ -200,9 +200,9 @@ export function createASTNSchemaDeserializer<PAnnotation>(
                         onExists: () => wrap(context.expectTaggedUnion({
                             options: {
                                 "dictionary": () => {
-                                    return wrap(((callback: (out: x.__dictionary_T) => void) => {
-                                        let _key_v: x.__simple_string_T | null = null
-                                        let _value_v: x.__value_T | null = null
+                                    return wrap(((callback: (out: x.T__dictionary) => void) => {
+                                        let _key_v: x.T__simple_string | null = null
+                                        let _value_v: x.T__value | null = null
                                         return context.expectVerboseGroup({
                                             properties: {
                                                 "key": {
@@ -243,16 +243,16 @@ export function createASTNSchemaDeserializer<PAnnotation>(
                                     })((node) => _type_v = ["dictionary", node]))
                                 },
                                 "group": () => {
-                                    return wrap(((callback: (out: x.__group_T) => void) => {
-                                        const _properties_v = pm.createDictionaryBuilder<x.__properties_T>()
+                                    return wrap(((callback: (out: x.T__group) => void) => {
+                                        const _properties_v = pm.createDictionaryBuilder<x.T__properties>()
                                         return context.expectVerboseGroup({
                                             properties: {
                                                 "properties": {
                                                     onNotExists: () => { /**/ },
                                                     onExists: () => wrap(context.expectDictionary({
                                                         onProperty: (propertyData) => {
-                                                            return wrap(((callback: (out: x.__properties_T) => void) => {
-                                                                let _value_v: x.__value_T | null = null
+                                                            return wrap(((callback: (out: x.T__properties) => void) => {
+                                                                let _value_v: x.T__value | null = null
                                                                 return context.expectVerboseGroup({
                                                                     properties: {
                                                                         "value": {
@@ -291,8 +291,8 @@ export function createASTNSchemaDeserializer<PAnnotation>(
                                     })((node) => _type_v = ["group", node]))
                                 },
                                 "list": () => {
-                                    return wrap(((callback: (out: x.__list_T) => void) => {
-                                        let _value_v: x.__value_T | null = null
+                                    return wrap(((callback: (out: x.T__list) => void) => {
+                                        let _value_v: x.T__value | null = null
                                         return context.expectVerboseGroup({
                                             properties: {
                                                 "value": {
@@ -320,7 +320,7 @@ export function createASTNSchemaDeserializer<PAnnotation>(
                                     })((node) => _type_v = ["list", node]))
                                 },
                                 "multiline string": () => {
-                                    return wrap(((callback: (out: x.__multiline_string_T) => void) => {
+                                    return wrap(((callback: (out: x.T__multiline_string) => void) => {
                                         return context.expectVerboseGroup({
                                             properties: {},
                                             onEnd: () => {
@@ -330,7 +330,7 @@ export function createASTNSchemaDeserializer<PAnnotation>(
                                     })((node) => _type_v = ["multiline string", node]))
                                 },
                                 "simple string": () => {
-                                    return wrap(((callback: (out: x.__simple_string_type_T) => void) => {
+                                    return wrap(((callback: (out: x.T__simple_string_type) => void) => {
                                         let _default_value_v: string | null = null
                                         let _quoted_v: boolean | null = null
                                         return context.expectVerboseGroup({
@@ -375,9 +375,9 @@ export function createASTNSchemaDeserializer<PAnnotation>(
                                     })((node) => _type_v = ["simple string", node]))
                                 },
                                 "tagged union": () => {
-                                    return wrap(((callback: (out: x.__tagged_union_T) => void) => {
-                                        let _default_option_v: AnnotatedString<PAnnotation> | null = null
-                                        const _options_v = pm.createDictionaryBuilder<x.__options_T>()
+                                    return wrap(((callback: (out: x.T__tagged_union) => void) => {
+                                        let _default_option_v: TAnnotatedString<PAnnotation> | null = null
+                                        const _options_v = pm.createDictionaryBuilder<x.T__options>()
                                         return context.expectVerboseGroup({
                                             properties: {
                                                 "default option": {
@@ -396,8 +396,8 @@ export function createASTNSchemaDeserializer<PAnnotation>(
                                                     onNotExists: () => { /**/ },
                                                     onExists: () => wrap(context.expectDictionary({
                                                         onProperty: (propertyData) => {
-                                                            return wrap(((callback: (out: x.__options_T) => void) => {
-                                                                let _value_v: x.__value_T | null = null
+                                                            return wrap(((callback: (out: x.T__options) => void) => {
+                                                                let _value_v: x.T__value | null = null
                                                                 return context.expectVerboseGroup({
                                                                     properties: {
                                                                         "value": {
@@ -446,8 +446,8 @@ export function createASTNSchemaDeserializer<PAnnotation>(
                                     })((node) => _type_v = ["tagged union", node]))
                                 },
                                 "type reference": () => {
-                                    return wrap(((callback: (out: x.__type_reference_T) => void) => {
-                                        let _type_v: AnnotatedString<PAnnotation> | null = null
+                                    return wrap(((callback: (out: x.T__type_reference) => void) => {
+                                        let _type_v: TAnnotatedString<PAnnotation> | null = null
                                         return context.expectVerboseGroup({
                                             properties: {
                                                 "type": {

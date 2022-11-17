@@ -1,11 +1,11 @@
-import { Schema, ValueDefinition } from "astn-typedhandlers-api"
+import { TSchema, TValueDefinition } from "api-astn-typedhandlers"
 import * as pl from "pareto-core-lib"
 import * as pt from "pareto-core-types"
-import * as tc from "astn-tokenconsumer-api"
+import * as tc from "api-astn-tokenconsumer"
 
 export function serializeSchema(
-    schema: Schema,
-    sendEvent: (event: tc.Token) => void,
+    schema: TSchema,
+    sendEvent: (event: tc.TToken) => void,
 ): void {
     function serializeDictionary<T>(
         dict: pt.Dictionary<T>,
@@ -74,7 +74,7 @@ export function serializeSchema(
     }
 
 
-    function serializeValueDefinition(valueDefinition: ValueDefinition) {
+    function serializeValueDefinition(valueDefinition: TValueDefinition) {
         serializeVerboseType({
             type: () => {
                 serializeTaggedUnion(valueDefinition.type[0], () => {

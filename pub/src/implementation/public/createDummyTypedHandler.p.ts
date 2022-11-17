@@ -1,5 +1,5 @@
 
-import * as th from "astn-typedhandlers-api"
+import * as th from "api-astn-typedhandlers"
 
 export function createDummyTypedHandler<PAnnotation>(
 ): th.ITypedValueHandler<PAnnotation> {

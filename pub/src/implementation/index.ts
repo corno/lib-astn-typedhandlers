@@ -1,7 +1,7 @@
 import * as inf from "../interface"
-import { createASTNSchemaDeserializer } from "./createASTNSchemaDeserializer.generated"
-import { createDummyTypedHandler } from "./createDummyTypedHandler"
-import { serializeSchema } from "./serializeSchema.generated"
+import { createASTNSchemaDeserializer } from "./public/createASTNSchemaDeserializer.generated.p"
+import { createDummyTypedHandler } from "./public/createDummyTypedHandler.p"
+import { serializeSchema } from "./public/serializeSchema.generated.p"
 
 // type API = {
 //     createDummyTypedHandler: inf.createDummyTypedHandler
