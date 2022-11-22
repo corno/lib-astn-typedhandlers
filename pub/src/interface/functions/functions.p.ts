@@ -1,7 +1,6 @@
 import * as th from "api-astn-typedhandlers"
 import * as h from "api-astn-handlers"
 import * as tc from "api-astn-tokenconsumer"
-import * as prl from "pareto-core-resolve"
 
 export type FCreateDummyTypedHandler = <PAnnotation>(
 ) => th.ITypedValueHandler<PAnnotation>
@@ -20,7 +19,7 @@ export type FCreateDeserializer = <PAnnotation>(
         readonly "callback": ($: th.T__root | null) => void,
     },
     $d: {
-        rr: prl.ResolveRegistry<PAnnotation>,
+        //rr: prl.ResolveRegistry<PAnnotation>,
 
     }
 ) => h.IRequiredValueHandler<PAnnotation>
