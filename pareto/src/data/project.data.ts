@@ -8,7 +8,7 @@ import { $ as api } from "./api.data"
 
 export const $: mproject.TProject = {
     'author': "Corno",
-    'description': "makes it straightforward to generate properly indented source code files",
+    'description': "handlers for tokens that are annotated with type information",
     'license': "ISC",
 
     'pubdependencies': d({
@@ -23,6 +23,7 @@ export const $: mproject.TProject = {
         },
         'submodules': d({
         }),
+        'executables': d({}),
         'test': {
             'dependencies': d({
                 "res-pareto-tostring": {},
