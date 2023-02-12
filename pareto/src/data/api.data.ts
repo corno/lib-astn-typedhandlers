@@ -13,14 +13,13 @@ import * as mmoduleDefinition from "lib-pareto-typescript-project/dist/submodule
 
 const d = pr.wrapRawDictionary
 
-export const $: mmoduleDefinition.TModuleDefinition = {
+export const $: mmoduleDefinition.T.ModuleDefinition = {
     'glossary': {
         'imports': d({
             "common": "glo-pareto-common"
         }),
         'parameters': d({}),
-        'templates': d({}),
-        'types': types({
+        'types': d({
         }),
         'interfaces': d({
         }),

@@ -7,9 +7,9 @@
 //     "quote-props": 0
 // */
 
-// import * as pm from "pareto-core-state"
-// import * as pl from "pareto-core-lib"
-// import * as pt from "pareto-core-types"
+// import * as pm from 'pareto-core-state'
+// import * as pl from 'pareto-core-lib'
+// import * as pt from 'pareto-core-types'
 
 // import * as prl from "pareto-core-resolve"
 // import * as x from "api-astn-typedhandlers"
