@@ -12,7 +12,7 @@ export const $: mproject.T.Project = {
     'description': "handlers for tokens that are annotated with type information",
     'license': "ISC",
 
-    'pubdependencies': d({
+    'dependencies': d({
         "glo-pareto-common": {},
         "glo-astn-handlers": {},
         "glo-astn-tokenconsumer": {},
@@ -31,6 +31,13 @@ export const $: mproject.T.Project = {
             'dependencies': d({
                 "res-pareto-tostring": {},
             }),
+            'glossary': {
+                'functions': d({}),
+                'imports': d({}),
+                'parameters': d({}),
+                'types': d({}),
+                'interfaces': d({}),
+            },
         }
     }],
 }
